@@ -7,8 +7,26 @@ let ul = document.querySelector("ul");
 
 const empty = document.getElementById("chat-empty");
 
-chatButton.addEventListener("click", (e) => {
-  e.preventDefault();
+let body = document.querySelector("body");
+
+let emojiButton = document.getElementById("chat-emoji");
+let emojiModal = document.getElementById("chat-emoji-modal");
+
+let chatFile = document.getElementById("chat-file");
+let chatModal = document.getElementById("chat-file-modal");
+
+// const imagenDePerfil = new Image(50, 50);
+const imagenDePerfil = document.createElement('img')
+
+
+imagenDePerfil.classList.add = "chat-image-profile";
+imagenDePerfil.src = "https://picsum.photos/200/301";
+
+// Modificar los dos mensajes consecutivos para que parezcan de personas disintas, uno a la izq y otro a la derecha
+// Imagen de perfil esta creada con createElement, esta bien eso? DEmora la imagen por el llamado externo
+
+function crearTextoDeChat(event) {
+  event.preventDefault();
 
   const textChat = chatInput.value;
 
@@ -16,51 +34,46 @@ chatButton.addEventListener("click", (e) => {
     const li = document.createElement("li");
     const p = document.createElement("p");
     const profile = document.createElement("p");
-    const img = new Image(50, 50);
-
-    img.classList.add = "chat-image-profile";
-    img.src = "https://picsum.photos/200/301";
-
-    img.addEventListener("click", function (e) {
-      li.appendChild(profile);
-      li.style.fontSize = "12px";
-    });
 
     p.textContent = textChat;
 
     li.appendChild(p);
     ul.appendChild(li);
-    li.appendChild(img);
+    li.appendChild(imagenDePerfil);
 
     chatInput.value = "";
 
     chatContainer.setAttribute("style", "overflow:auto;");
   }
-});
+}
 
-let emojiButton = document.getElementById("chat-emoji");
-let emojiModal = document.getElementById("chat-emoji-modal");
-let chatFile = document.getElementById("chat-file");
-let chatModal = document.getElementById("chat-file-modal");
 
-// Two similar functions to create one
+function handleModal(event, modal) {
+  console.log("entro");
+  event.stopPropagation();
 
-emojiButton.addEventListener("click", function () {
-  if (emojiModal.style.display === "none") {
-    emojiModal.style.display = "block";
+  if (modal.style.display === "none") {
+    modal.style.display = "block";
   } else {
-    emojiModal.style.display = "none";
+    modal.style.display = "none";
   }
-});
+}
 
-chatFile.addEventListener("click", function (event) {
-  if (chatModal.style.display === "none") {
-    chatModal.style.display = "block";
-  } else {
-    chatModal.style.display = "none";
-  }
-});
+function closeModal() {
+  console.log("Closed");
+  emojiModal.style.display = "none";
+  chatModal.style.display = "none";
+}
 
+// Add Event Listeners
+
+chatButton.addEventListener("click", (event) => crearTextoDeChat(event));
+
+emojiButton.addEventListener("click", (event) =>
+  handleModal(event, emojiModal)
+);
+chatFile.addEventListener("click", (event) => handleModal(event, chatModal));
+body.addEventListener("click", closeModal);
 // SELECCIONAR UN EMOJI
 
 // function getTheSelectedEmoji () {

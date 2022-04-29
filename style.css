@@ -21,6 +21,17 @@ ul {
     border: 3px solid black;
 }
 
+li:nth-child(even) {
+background-color: red;
+    align-self: right;
+}
+
+li:nth-child(odd) {
+    background-color: blue;
+        align-self: left;
+}
+
+
 li {
     display: flex;
     width: 200px;
@@ -33,7 +44,10 @@ li {
     height: 30px;
     background-color: whitesmoke;
     border-radius: 30px;
+
 }
+
+
 
 i {
     font-size: 20px;

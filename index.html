@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="chat-container">
+      <div class="chat-row">
+        <ul></ul>
+      </div>
+    </div>
+    <form class="chat-input" id="chat-form">
+      <div class="chat-emoji-wrapper">
+        <i class="far fa-file" id="chat-file"></i>
+        <div id="chat-file-modal">
+          <p>Subi tu foto</p>
+          <input type="file" />
+        </div>
+        <i class="far fa-grin-beam" id="chat-emoji"></i>
+        <div id="chat-emoji-modal">
+          <i class="emoji-modal">😀</i>
+          <i class="emoji-modal">🙂</i>
+          <i class="emoji-modal">😀</i>
+          <i class="emoji-modal">😄</i>
+          <i class="emoji-modal">😁</i>
+          <i class="emoji-modal">😅 </i>
+          <i class="emoji-modal">🤣 </i>
+          <i class="emoji-modal">😂</i>
+        </div>
+      </div>
+      <input type="text" id="chat-input" placeholder="Envia tu mensaje..." />
+      <button id="chat-button">
+        <i class="far fa-paper-plane" id="chat-button-message"></i>
+      </button>
+    </form>
+
+    <!-- <script src="app.js"></script> -->
+    <script src="main.js"></script>
+  </body>
+</html>
